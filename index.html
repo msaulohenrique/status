@@ -66,14 +66,14 @@
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      };
-  ping('https://' + site).then(function(delta) {
-    document.getElementById("ping_text").innerHTML =    + String(delta) + ' ms';
-    console.log('Ping time was ' + String(delta) + ' ms');
-}).catch(function(err) {
-    document.getElementById("ping_text").innerHTML =    'Could not ping remote URL';
-    console.error('Could not ping remote URL', err);
-});
    $(document).ready(function(){
+       ping('https://' + site).then(function(delta) {
+           document.getElementById("ping_text").innerHTML =    delta + ' ms';
+           console.log('Ping time was ' + String(delta) + ' ms');
+       }).catch(function(err) {
+           document.getElementById("ping_text").innerHTML =    'Could not ping remote URL';
+           console.error('Could not ping remote URL', err);
+       });
      $.ajax('http://' + site, {
        statusCode: {
             404: function() {
