@@ -29,7 +29,7 @@ var p = new Ping();
  
 var site = prompt("Informe o site a ser verificado", "ninjashost.com.br");
     if (site != null) {
-      document.getElementById("url_site").innerHTML =    site;
+	 $("#url-site").html(site);
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      };
 	    
@@ -47,9 +47,9 @@ p.ping("https://" + site, function(err, data) {
 <body>
     <center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
 
-    <ul>
-    <li><span id="url_site"></span> <span id="ping-text"></span></li>
-    </ul>
+    <h1><span id="url-site"></span></h1>
+    <p><strong>Status</strong> <span id="ping-text"></span></p>
+    
 
 
   
