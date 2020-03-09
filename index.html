@@ -61,12 +61,12 @@
   </div>
 </footer>
 <script>
-  $( document ).ready(function() {
     var site = prompt("Informe o site a ser verificado", "google.com.br");
     if (site != null) {
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      };
+   $(document).ready(function(){
      $.ajax('http://' + site, {
        statusCode: {
             404: function() {
