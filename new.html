@@ -38,24 +38,27 @@ p.ping("http://google.com", function(err, data) {
 });
 
 
-p.ping("https://github.com", function(err, data) {
+p.ping("https://" + site, function(err, data) {
 		data = data + " " + err;
     $("#ping-github").html(data);
 });
 
 
     });
-
+    var site = prompt("Informe o site a ser verificado", "google.com.br");
+    if (site != null) {
+      document.getElementById("url_site").innerHTML =    site;
+      document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
+     };
   //]]></script>
 
 </head>
 <body>
-    <ul>
-    <li>guildbit.com <span id="ping-guildbit"></span></li>
-    <li>Google.coom <span id="ping-google"></span></li>
-    <li>Github.com <span id="ping-github"></span></li>
+    <center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
 
-</ul>
+    <ul>
+    <li><span id="url_site"></span> <span id="ping-github"></span></li>
+    </ul>
 
 
   
