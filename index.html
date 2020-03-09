@@ -66,37 +66,23 @@
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      };
-   $(document).ready(function(){
-       ping('https://' + site).then(function(delta) {
-           document.getElementById("ping_text").innerHTML =    delta + ' ms';
-           console.log('Ping time was ' + String(delta) + ' ms');
-       }).catch(function(err) {
-           document.getElementById("ping_text").innerHTML =    'Could not ping remote URL';
-           console.error('Could not ping remote URL', err);
-       });
-     $.ajax('http://' + site, {
-       statusCode: {
-            404: function() {
-                document.getElementById("status_text").innerHTML =    'Offline';
-              alert('Not working!');
-            },
-            200: function() {
-                document.getElementById("status_text").innerHTML =    'Online';
-              alert('Online!');
-            },
-            0: function (response) {
-                alert('Not working!');
-            }              
-        }
-     });
-  });
-  </script>
+     var p = new Ping();
+
+p.ping("http://" + site, function(err, data) {
+  // Also display error if err is returned.
+  if (err) {
+    console.log("error loading resource")
+    data = data + " " + err;
+  }
+  document.getElementById("ping_text").innerHTML = data;
+});
+</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="./ping.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
 </body>
 </html>
