@@ -78,9 +78,11 @@
        statusCode: {
             404: function() {
                 document.getElementById("status_text").innerHTML =    'Offline';
+              alert('Not working!');
             },
             200: function() {
                 document.getElementById("status_text").innerHTML =    'Online';
+              alert('Online!');
             },
             0: function (response) {
                 alert('Not working!');
