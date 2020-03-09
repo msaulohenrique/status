@@ -47,7 +47,7 @@
     <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
   <div class="container">
-    <h1 class="mt-5">Status de WebSite - https://google.com</h1>
+    <h1 class="mt-5">Status de WebSite - <i id="url_site">...</i></h1>
     <p class="lead">Verifique se o site está online e o ping atual.</p>
     <center><img src="https://s0.wp.com/mshots/v1/google.com?w=400&h=300&nocache" alt="thumb" /></center>
     <p><strong>Status:</strong><span color="" class="status_text">...</span></p>
@@ -63,7 +63,8 @@
     <script>
     ktover_kad = "" + document.location;
     ktover_krom = ktover_kad.indexOf("?");
-    ktover_wage = ktover_kad.substring(ktover_krom + 1, ktover_kad.length);
+    ktover_kad = ktover_kad.substring(ktover_krom + 1, ktover_kad.length);
+    document.getElementById("url_site").innerHTML = ktover_kad;
 $.ajax({
         url: ktover_kad,
         method: "HEAD",
