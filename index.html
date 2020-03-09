@@ -49,7 +49,7 @@
   <div class="container">
     <h1 class="mt-5">Status de WebSite - <i id="url_site">...</i></h1>
     <p class="lead">Verifique se o site está online e o ping atual.</p>
-    <center><img src="https://s0.wp.com/mshots/v1/google.com?w=400&h=300&nocache" alt="thumb" /></center>
+    <center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
     <p><strong>Status:</strong><span color="" class="status_text">...</span></p>
     <p><strong>Ping:</strong><span color="" class="ping_text">...</span></p>
   </div>
@@ -64,7 +64,7 @@
     var site = prompt("Informe o site a ser verificado", "google.com.br");
     if (site != null) {
       document.getElementById("url_site").innerHTML =    site;
-      $("img").attr("src","https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
+      document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      }
     </script>
     <!-- Optional JavaScript -->
