@@ -26,19 +26,6 @@
         callback(false);
     },5000)
 
-    var img = document.createElement("img");
-    img.onload = function() {
-        clearTimeout(timer);
-        callback(true);
-    }
-
-    img.onerror = function() {
-        clearTimeout(timer);
-        callback(false);
-    }
-
-    img.src = url+"/favicon.ico";
-    }
     isSiteOnline(document.getElementById('pingurl').value,function(found){
     if(found) {
         document.getElementById("ping_text").appendChild(found);
@@ -47,7 +34,7 @@
         var offline = document.createTextNode("Offline");
         document.getElementById("ping_text").appendChild(offline);
     }
-    })
+    });
     var do_ping = function() {
         ping(document.getElementById('pingurl').value).then(function(delta) {
             //alert(delta);
