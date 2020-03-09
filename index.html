@@ -50,8 +50,8 @@
     <h1 class="mt-5">Status de WebSite - https://google.com</h1>
     <p class="lead">Verifique se o site está online e o ping atual.</p>
     <center><img src="https://s0.wp.com/mshots/v1/google.com?w=400&h=300&nocache" alt="thumb" /></center>
-    <p><strong>Status:</strong></p>
-    <p><strong>Ping:</strong></p>
+    <p><strong>Status:</strong><span color="" class="status_text">...</span></p>
+    <p><strong>Ping:</strong><span color="" class="ping_text">...</span></p>
   </div>
 </main>
 
@@ -64,35 +64,20 @@
     ktover_kad = "" + document.location;
     ktover_krom = ktover_kad.indexOf("?");
     ktover_wage = ktover_kad.substring(ktover_krom + 1, ktover_kad.length);
-    function isURLReal(fullyQualifiedURL) {
-    var URL = encodeURIComponent(fullyQualifiedURL),
-        dfd = $.Deferred(),
-        checkURLPromise = $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20htmlstring%20where%20url%3D%22' + URL + '%22&format=json');
-
-    checkURLPromise
-            .done(function(response) {
-                // results should be null if the page 404s or the domain doesn't work
-                if (response.query.results) { 
-                    dfd.resolve(true);
-                } else {
-                    dfd.reject(false);
-                }
-            })
-            .fail(function() {
-                dfd.reject('failed');
-            });
+$.ajax({
+        url: ktover_kad,
+        method: "HEAD",
+        success: function(data){
+          // survey is active
+          $(".status_text").text("Online");
+          $(".status_text").attr("color", "green");
+        },
+        error: function(xhr, msg, status) {
+          $(".status_text").text("Offline");
+          $(".status_text").attr("color", "red");
+        }
+        }
     });
-
-    return dfd.promise();
-      // usage
-isURLReal('http://' + ktover_wage)
-        .done(function(result) {
-            alert("online");
-        })
-        .fail(function(result) {
-           alert("offline");
-        });
-}
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
