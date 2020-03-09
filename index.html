@@ -61,23 +61,11 @@
   </div>
 </footer>
     <script>
-    ktover_kad = "" + document.location;
-    ktover_krom = ktover_kad.indexOf("?");
-    ktover_kad = ktover_kad.substring(ktover_krom + 1, ktover_kad.length);
-    document.getElementById("url_site").innerHTML = ktover_kad;
-$.ajax({
-        url: ktover_kad,
-        method: "HEAD",
-        success: function(data){
-          // survey is active
-          $(".status_text").text("Online");
-          $(".status_text").attr("color", "green");
-        },
-        error: function(xhr, msg, status) {
-          $(".status_text").text("Offline");
-          $(".status_text").attr("color", "red");
-        }
-    });
+    var site = prompt("Informe o site a ser verificado", "google.com.br");
+    if (site != null) {
+      document.getElementById("url_site").innerHTML =    site;
+      $("img").attr("src","https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
+     }
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
