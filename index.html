@@ -60,23 +60,28 @@
     <span class="text-muted">&copy; <script type="text/javascript"> document.write(new Date().getFullYear());</script>, Saulo Henrique.</span>
   </div>
 </footer>
-    <script>
+<script>
+  $( document ).ready(function() {
     var site = prompt("Informe o site a ser verificado", "google.com.br");
     if (site != null) {
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
-     }
+     };
      $.ajax('http://' + site, {
-  statusCode: {
-    404: function() {
-      document.getElementById("status_text").innerHTML =    'Offline';
-    },
-    200: function() {
-      document.getElementById("status_text").innerHTML =    'Online';
-    }
-  }
-});
-    </script>
+       statusCode: {
+            404: function() {
+                document.getElementById("status_text").innerHTML =    'Offline';
+            },
+            200: function() {
+                document.getElementById("status_text").innerHTML =    'Online';
+            },
+            0: function (response) {
+                alert('Not working!');
+            }              
+        }
+     });
+  });
+  </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
