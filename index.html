@@ -66,6 +66,16 @@
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      }
+     $.ajax('http://' + site, {
+  statusCode: {
+    404: function() {
+      document.getElementById("status_text").innerHTML =    'Offline';
+    },
+    200: function() {
+      document.getElementById("status_text").innerHTML =    'Online';
+    }
+  }
+});
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
