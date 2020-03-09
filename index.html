@@ -1,54 +1,59 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Saulo Henrique">
+    <title>Status do WebSite</title>
 
+    <meta name="theme-color" content="#563d7c">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Verificar Status de Site!</title>
-  </head>
-  <body>
-    <h1>Informações do Site</h1>
-    <input id='pingurl' type='text' value='http://google.com'></input>
-    <img src="https://s0.wp.com/mshots/v1/google.com?w=400&h=300'" alt=""/>
-    <p>Status: <span id="status_text"></span></p>
-    <p>Ping: <span id="ping_text"></span></p>  
-    <button onclick='do_ping()'>Ping</button>
-    <script src="./ping.js"></script>
-    <script>
-    function isSiteOnline(url,callback) {
-    // try to load favicon
-    var timer = setTimeout(function(){
-        // timeout after 5 seconds
-        callback(false);
-    },5000)
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-    isSiteOnline(document.getElementById('pingurl').value,function(found){
-    if(found) {
-        document.getElementById("ping_text").appendChild(found);
-    }
-    else {
-        var offline = document.createTextNode("Offline");
-        document.getElementById("ping_text").appendChild(offline);
-    }
-    });
-    var do_ping = function() {
-        ping(document.getElementById('pingurl').value).then(function(delta) {
-            //alert(delta);
-            document.getElementById("ping_text").appendChild(delta);
-        }).catch(function(error) {
-            //alert(String(error));
-            document.getElementById("ping_text").appendChild(error);
-        });
-    };
-    </script>
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Status de WebSite</h1>
+    <p class="lead">Verifique se o site está online e o ping atual.</p>
+    <img src="https://s0.wp.com/mshots/v1/google.com?w=400&h=300&nocache" alt="thumb" />
+    <strong>Google</strong>
+    <p>Status:</p>
+    <p>Ping:</p>
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">&copy; 2020<script type="text/javascript"> document.write(new Date().getFullYear());</script>, Saulo Henrique.</span>
+  </div>
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
