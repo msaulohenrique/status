@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
       <script type="text/javascript" src="https://rawgit.com/alfg/ping.js/master/dist/ping.min.js"></script>
 
@@ -35,7 +35,7 @@ var site = prompt("Informe o site a ser verificado", "ninjashost.com.br");
 	    
 p.ping("https://" + site, function(err, data) {
 		data = data + " " + err;
-    $("#ping-github").html(data + 'ms');
+    $("#ping-github").html(data);
 });
 
 
