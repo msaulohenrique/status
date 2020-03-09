@@ -42,25 +42,7 @@
      background-color: #f5f5f5;
    }
     </style>
-  </head>
-  <body class="d-flex flex-column h-100">
-    <!-- Begin page content -->
-<main role="main" class="flex-shrink-0">
-  <div class="container">
-    <h1 class="mt-5">Status de WebSite - <i id="url_site">...</i></h1>
-    <p class="lead">Verifique se o site está online e o ping atual.</p>
-    <center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
-    <p><strong>Status:</strong><span color="" class="status_text">...</span></p>
-    <p><strong>Ping:</strong><span color="" class="ping_text">...</span></p>
-  </div>
-</main>
-
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">&copy; <script type="text/javascript"> document.write(new Date().getFullYear());</script>, Saulo Henrique.</span>
-  </div>
-</footer>
-
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -74,14 +56,32 @@
       document.getElementById("url_site").innerHTML =    site;
       document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
      };
-    $(window).load(function(){
+   $(window).load(function(){
     var p = new Ping();
  
     p.ping("https://google.com", function(err, data) {
     		data = data + " " + err;
         $("#ping_text").html(data);
     });
-    });
+   });
 </script>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Status de WebSite - <i id="url_site">...</i></h1>
+    <p class="lead">Verifique se o site está online e o ping atual.</p>
+    <center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
+    <p><strong>Status:</strong><span class="status_text">...</span></p>
+    <p><strong>Ping:</strong><span class="ping_text">...</span></p>
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">&copy; <script type="text/javascript"> document.write(new Date().getFullYear());</script>, Saulo Henrique.</span>
+  </div>
+</footer>
 </body>
 </html>
