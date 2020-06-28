@@ -55,7 +55,8 @@
 			if (site != null) {
 				//document.getElementById("url_site").innerHTML = site;
 				$("#url_site").html(site);
-				document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
+				//document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
+				$("#img_site").attr("src", "https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
 			};
 			//$(window).load(function(){
 				var p = new Ping();
