@@ -15,31 +15,31 @@
 		
 		<style>
 			.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
 			}
 			
 			@media (min-width: 768px) {
-			.bd-placeholder-img-lg {
-			font-size: 3.5rem;
-			}
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
 			}
 			/* Custom page CSS
 			-------------------------------------------------- */
 			/* Not required for template or sticky footer method. */
 			
 			.container {
-			width: auto;
-			max-width: 780px;
-			padding: 0 15px;
+				width: auto;
+				max-width: 780px;
+				padding: 0 15px;
 			}
 			
 			.footer {
-			background-color: #f5f5f5;
+				background-color: #f5f5f5;
 			}
 		</style>
 		
@@ -51,23 +51,28 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
 		<script>
-			$(document).ready(function() {
-				var site = window.prompt("Informe o site a ser verificado", "google.com.br");
-			});
-			if (site != null) {
-				//document.getElementById("url_site").innerHTML = site;
-				$("#url_site").text(site);
-				//document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
-				$("#img_site").attr("src", "https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
-			};
-			//$(window).load(function(){
-				var p = new Ping();
-				
-				p.ping("http://"+site, function(err, data) {
-					data = data + " " + err;
-					$("#ping_text").text(data);
+			$(document).ready(function(){
+				$('input').bind('click', function(e){
+					if($.trim($(e.target).val())==='') $(e.target).val('http://');
 				});
-			//});
+				$("#site").on("input", function(){
+					var site = $(this).val();
+					var p = new Ping();
+					
+					//var site_simple = site.replace("http://", "");
+					var site_simple = site.replace("https://", "");
+					//var site_simple = site.replace("www.", "");
+					
+					
+					$("#url_site").html(site);
+					
+					$("#img_site").attr("src", "https://s0.wp.com/mshots/v1/" + site_simple + "?w=400&h=300&nocache");
+					
+					p.ping(site, function(err, data) {
+						$("#ping_text").html(data+" ms");
+					});
+				});
+			});
 		</script>
 	</head>
 	<body class="d-flex flex-column h-100">
@@ -77,8 +82,10 @@
 				<h1 class="mt-5">Status de WebSite - <i id="url_site">...</i></h1>
 				<p class="lead">Verifique se o site está online e o ping atual.</p>
 				<center><img id="img_site" src="https://s0.wp.com/mshots/v1/default?w=400&h=300&nocache" alt="thumb" /></center>
-				<p><strong>Status:</strong><span class="status_text">...</span></p>
-				<p><strong>Ping:</strong><span class="ping_text">...</span></p>
+				<hr />
+				<center><p><input class="form-control" type="url" placeholder="https://google.com" id="site" required></p></center>
+				<p style="display:none"><strong>Status:</strong> <span id="status_text">...</span></p>
+				<p><strong>Ping:</strong> <span id="ping_text">...</span></p>
 			</div>
 		</main>
 		
