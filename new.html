@@ -30,10 +30,10 @@
 				var site = prompt("Informe o site a ser verificado", "google.com.br");
 				if (site != null) {
 					$("#url-site").html(site);
-					document.getElementById("img_site").src= 'https://s0.wp.com/mshots/v1/' + site + '?w=400&h=300&nocache';
+					$("#img_site").attr("src", "https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
 				};
 				
-				p.ping("https://" + site, function(err, data) {
+				p.ping("http://" + site, function(err, data) {
 					data = data + " " + err;
 					$("#ping-github").html(data);
 				});
