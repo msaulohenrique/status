@@ -27,7 +27,10 @@
 				
 				var p = new Ping();
 				
-				var site = prompt("Informe o site a ser verificado", "google.com.br");
+				$(document).ready(function() {
+					var site = window.prompt("Informe o site a ser verificado", "google.com.br");
+				});
+			
 				if (site != null) {
 					$("#url-site").html(site);
 					$("#img_site").attr("src", "https://s0.wp.com/mshots/v1/" + site + "?w=400&h=300&nocache");
